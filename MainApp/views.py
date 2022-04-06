@@ -60,18 +60,18 @@ def loginpage(request):
             messages.info(request, "Email or Password is Incorrect")
     return render(request, "login.html", {})
 
-
+@login_required(login_url='login')
 def logoutpage(request):
     logout(request)
     return redirect("login")
 
-
+@login_required(login_url='login')
 def home(request):
     product_list = Product.objects.all()
     print(product_list)
     return render(request, 'home.html', {'product_list': product_list})
 
-
+@login_required(login_url='login')
 def profile(request):
     return render(request, "profile.html", {})
 
@@ -93,3 +93,9 @@ def add_product(request):
                 print(errors)
             return render(request, 'add_product.html', {'form': form})
     return render(request, "add_product.html", {'form': form})
+
+def view_product(request, id):
+    product = Product.objects.get(id=id)
+    comments = Comment.objects.filter(product=product)
+    print(comments)
+    return render(request, "view_product.html", {'product': product, 'comments': comments})

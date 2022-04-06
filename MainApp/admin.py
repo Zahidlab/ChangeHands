@@ -110,6 +110,6 @@ admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Comment)
 admin.site.register(Catagory)
 admin.site.register(Product)
-admin.site.register(Post)
+admin.site.register(Review)
 
 

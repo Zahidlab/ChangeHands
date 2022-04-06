@@ -90,3 +90,10 @@ body {
     height: auto;
   }
 }
+.cat{
+  font-size: 20px;
+  background-color: #00ae71;
+  color: aliceblue;
+  padding: 3px;
+  text-transform: capitalize;
+}

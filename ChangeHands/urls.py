@@ -14,4 +14,5 @@ urlpatterns = [
     path('logout', views.logoutpage, name = 'logout'),
     path('profile', views.profile, name = 'profile'),
     path('add_product', views.add_product, name = 'add_product'),
+    path('view_product/<int:id>', views.view_product, name = 'view_product'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

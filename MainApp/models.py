@@ -1,4 +1,5 @@
 # from datetime import timezone
+from distutils.command.upload import upload
 from pickle import TRUE
 
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
@@ -92,9 +93,9 @@ class Product(models.Model):
     price       = models.DecimalField(max_digits = 10, decimal_places=2)
     status      = models.BooleanField(default=True)
     created_at  = models.DateTimeField(auto_now_add=True)
-    image1      = models.ImageField()
-    image2      = models.ImageField(null = True)
-    image3      = models.ImageField(null = True)
+    image1      = models.ImageField(upload_to="product/")
+    image2      = models.ImageField(upload_to="product/", null = True)
+    image3      = models.ImageField(upload_to="product/", null = True)
     original_url = models.URLField(blank=True, null=True)
     negotiable  = models.BooleanField(default=True)
     catagory    = models.ForeignKey(Catagory, on_delete=models.CASCADE)
@@ -104,22 +105,32 @@ class Product(models.Model):
         return str(self.name)
 
 
-class Post(models.Model):
-    id = models.AutoField(primary_key=True)
-    text = models.CharField(max_length=5000)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+# class Post(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     text = models.CharField(max_length=5000)
+#     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.text[:10])
+#     def __str__(self):
+#         return str(self.text[:10])
 
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
     text = models.CharField(max_length= 2000)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
+    commenter = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.text[:10]
+
+class Review(models.Model):
+    id = models.AutoField(primary_key=True)
+    text = models.CharField(max_length= 2000)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="reviewer")
+    seller = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="seller")
 
     def __str__(self):
         return self.text[:10]
