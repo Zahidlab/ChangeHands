@@ -1,8 +1,11 @@
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-# from .forms import RegisterForm
+from .forms import RegisterForm
+from .models import *
 
 
 # Create your views here.
@@ -10,29 +13,63 @@ def index(request):
     return HttpResponse("Hello world")
 
 def register(request):
-    pass
-    # if request.method == 'POST':
-    #     # create a form instance and populate it with data from the request:
-    #     form = RegisterForm(request.POST)
+    # pass
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = RegisterForm(request.POST)
         
-    #     # check whether it's valid:
-    #     if form.is_valid():
-    #         print("form is valid")
-    #         form.save()
-    #         return HttpResponseRedirect('/home/')
-    #     else:
-    #         print("form is not valid")
-            
+        # check whether it's valid:
+        if form.is_valid():
+            print("form is valid")
+            form.save()
+            return redirect("login")
+        else:
+            print("form is not valid")
+            for errors in form.errors:
+                print(errors)
+            return render(request, 'student_register.html', {'form': form})
 
     # if a GET (or any other method) we'll create a blank form
-    # else:
-    #     print("request is GET")
-    #     form = RegisterForm()
+    else:
+        print("request is GET")
+        form = RegisterForm()
 
-    # return render(request, 'student_register.html', {'form': form})
+    return render(request, 'student_register.html', {'form': form})
+
+
+
+
+
+def loginpage(request):
+
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        print(email, password)
+        user = authenticate(request, username=email, password=password)
+        print(user)
+        print(type(user))
+        if user is not None:
+            # print("User Id:", user.id)
+            print("User Name:", user.name)
+            login(request, user)
+            return redirect("home")
+         
+        else:
+            messages.info(request, "Email or Password is Incorrect")
+    return render(request, "login.html", {})
+
+def logoutpage(request):
+    logout(request)
+    return redirect("login")
 
 
 def home(request):
-    return HttpResponse("<h1>Home Page</h1>")
-def login(request):
-    return HttpResponse("<h1>Login Page</h1>")
+    product_list = Product.objects.all()
+    print(product_list)
+    return render(request, 'home.html', {'product_list': product_list})
+def profile(request):
+    return render(request, "profile.html", {})
+def add_product(request):
+    
+    return render(request, "add_product.html", {})

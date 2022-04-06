@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link type="text/css" rel="stylesheet" href="{% static 'css/result.css'  %}" />
+
+{% endblock head%}
+{%block title%}
+Feed|ChangeHands
+
+{%endblock title%}
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 ttl">
+            <h1>Latest Products</h1>
+
+        </div>
+    </div>
+    <div class="row shop_container">
+
+        {% for product in product_list %}
+
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="product">
+                <div class="product-img">
+                    <a href="/product/{{product.id}}">
+                        <img class="img-thumbnail" src="{{product.image1.url}}" alt="product_img1">
+                    </a>
+
+                </div>
+
+                <div class="product_info">
+                    <h3 class="font-weight-bold text-capitalize mess-name"><a href="/product/{{product.id}}" style="font-family: Arial, Helvetica, sans-serif;">{{product.name}}</a></h3>
+                    <div class="row">
+                        <div class="col">
+                            <span class="price">৳{{product.price}}</span> <br>
+
+                            
+                            <!-- <span class="">product No. {{product.product_no}}</span> <br> -->
+                            <!-- <span class="">{{product.floor}} Floor</span> <br> -->
+                            {% if product.status%}
+                            <span style="color: rgb(0, 126, 82);">Available</span> <br>
+                            {% else %}
+                            <span style="color: rgb(219, 56, 15);">Unvailable</span> <br>
+                            {% endif%}
+                        </div>
+                        <div class="col">
+                            <span class="">Owned BY {{product.owner.name}} </span> <br>
+
+                            <span class="">Posted at {{product.created_at.date}} </span> <br>
+                            
+                            {% if product.negotiable%}
+                            <span style="color: rgb(0, 126, 82);">Negotaiable</span> <br>
+                            {% else %}
+                            <span style="color: rgb(219, 56, 15);">Fixed Price</span> <br>
+                            {% endif%}
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+</div>
+
+
+{% endblock content%}

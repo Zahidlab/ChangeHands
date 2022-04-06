@@ -59,11 +59,11 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{%url 'shome' %}">Mess Finder</a>
+        <a class="navbar-brand" href="{%url 'home' %}">Mess Finder</a>
         <form class="d-flex">
 
           <span class="hello">Hello,
-            <a class = 'profile-link' href="{%url 'ohome' user.id %}"> {{request.user.name}}</a>
+            <a class = 'profile-link' href=""> {{request.user.name}}</a>
             </span>
          
             <a class="btn btn-outline-danger" href="{% url 'logout'%}">LogOut</a>
@@ -80,7 +80,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     >
-      {%block script %}
+      {%block script%}
       {%endblock %}
     </script>
   </body>

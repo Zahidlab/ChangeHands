@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{%block head%}
+
+<link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}" />
+{%endblock head%}
+
+{% block title %}Home|ChangeHands{% endblock title%}
+
+{% block content %}
+<div class="container-fluid m-10">
+    <div class="row m-3">
+        <div class="col-lg-4 col-md-12 m-2 profile text-center">
+            <img class="propic" src="{{user.profile_pic.url}}" alt="Profile Picture">
+            <h3>{{user.name}}</h3>
+
+            <h6><i class="fa-solid fa-envelope"></i> {{user.email}}</h6>
+            <h6><i class="fas fa-phone"></i> {{user.phone_number}}</h6>
+
+        </div>
+
+        <div class="col-lg-7 col-md-12 m-2 details">
+            
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}

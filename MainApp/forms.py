@@ -1,17 +1,17 @@
-# from django import forms
-# from django.contrib.auth.forms import UserCreationForm
-# from django.forms import ModelForm
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 
-# from .models import CustomUser
+from .models import CustomUser
 
 # # Create the form class.
 
-# class RegisterForm(UserCreationForm):
+class RegisterForm(UserCreationForm):
 
 
-#     class Meta(UserCreationForm.Meta):
-#         model = CustomUser
-#         fields = ("sid", "name", "email", "phone_number","password1", "password2", "department", "profile_pic", "id_card_pic", "facebook_profile", )
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = ("sid", "name", "email", "phone_number","password1", "password2", "department", "profile_pic", "id_card_pic", "facebook_profile", )
 
 #         widgets = {
 #             "username": forms.TextInput(
