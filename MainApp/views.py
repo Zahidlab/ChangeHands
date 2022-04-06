@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 
-from .forms import RegisterForm
+from .forms import *
 from .models import *
 
 
@@ -59,6 +60,7 @@ def loginpage(request):
             messages.info(request, "Email or Password is Incorrect")
     return render(request, "login.html", {})
 
+
 def logoutpage(request):
     logout(request)
     return redirect("login")
@@ -68,8 +70,26 @@ def home(request):
     product_list = Product.objects.all()
     print(product_list)
     return render(request, 'home.html', {'product_list': product_list})
+
+
 def profile(request):
     return render(request, "profile.html", {})
+
+@login_required(login_url='login')
 def add_product(request):
-    
-    return render(request, "add_product.html", {})
+    form = ProductForm()
+    # print(form)
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.owner = request.user
+            print(request.user)
+            product.save()
+            return redirect("home")
+        else:
+            print("form is not valid")
+            for errors in form.errors:
+                print(errors)
+            return render(request, 'add_product.html', {'form': form})
+    return render(request, "add_product.html", {'form': form})

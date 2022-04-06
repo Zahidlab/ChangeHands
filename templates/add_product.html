@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link type="text/css" rel="stylesheet" href="{% static 'css/student_register.css' %}" />
+
+{% endblock head%}
+{%block title%}
+Feed|ChangeHands
+
+{%endblock title%}
+{% block content%}
+<div class="container-fluid text-center booking-form">
+    <form method='POST' class="edit-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Add Product </h1>
+                    <hr>
+                </div>
+                
+                <div class="col">
+                    <div class="form-group">
+                        {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <div class="alert alert-danger">
+
+                                    <strong>{{ error|escape }}</strong><br>
+
+                            </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                        {% for error in form.non_field_errors %}
+                            <strong>{{ error|escape }}</strong>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <span class="form-label">Product Name</span>
+                        {{form.name}}
+                    </div>
+                    <div class="form-group">
+                        <span class="form-label">Price</span>
+                        {{form.price}}
+                    </div>
+                    <div class="form-group">
+                        <span class="form-label">Original URL</span>
+                        {{form.original_url}}
+                    </div>
+            
+                    <div class="form-group">
+                        <span class="form-label">Is Negotiable?</span>
+                        {{form.negotiable}}
+                    </div>
+                   
+                    
+                    <div class="form-group">
+                        <span class="form-label">Catagory</span>
+                        {{form.catagory}}
+                    </div>
+
+                    <div class="form-group">
+                        <span class="form-label">Details</span>
+                        {{form.details}}
+                    </div>
+                    
+                    
+                    {{form.image1}}
+                    {{form.image2}}
+                    {{form.image3}}
+                    <!-- {{form.mess}} -->
+                    <div class="form-btn">
+                        <input type="submit" value="Register" class="submit-btn">
+                    </div>
+                    <!-- {{form.errors}} -->
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+<!-- <form method = 'POST'></form> -->
+<script>
+        element = document.querySelectorAll("input, select");
+		// element = element + document.getElementsByTagName("select");
+
+		console.log(element);
+		for (var i = 0; i < element.length - 1; i++) {
+			element[i].classList.add('form-control');
+		}
+        // document.getElementsByTagName("select")[0].classList.remove('form-control');
+        document.getElementById("id_negotiable").classList.remove('form-control');
+</script>
+        
+
+
+
+{%endblock content%}

@@ -86,18 +86,18 @@ class Catagory(models.Model):
 
 
 class Product(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=300)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits = 10, decimal_places=2)
-    status = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    image1 = models.ImageField()
-    image2 = models.ImageField(null = True)
-    image3 = models.ImageField(null = True)
+    id          = models.AutoField(primary_key=True)
+    name        = models.CharField(max_length=300)
+    owner       = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    price       = models.DecimalField(max_digits = 10, decimal_places=2)
+    status      = models.BooleanField(default=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+    image1      = models.ImageField()
+    image2      = models.ImageField(null = True)
+    image3      = models.ImageField(null = True)
     original_url = models.URLField(blank=True, null=True)
-    negotiable = models.BooleanField(default=True)
-    catagory = models.ForeignKey(Catagory, on_delete=models.CASCADE)
+    negotiable  = models.BooleanField(default=True)
+    catagory    = models.ForeignKey(Catagory, on_delete=models.CASCADE)
     details = models.TextField(max_length=10000, default = "Description")
 
     def __str__(self):
