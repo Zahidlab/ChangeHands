@@ -8,10 +8,8 @@ from django.shortcuts import redirect, render
 from .forms import *
 from .models import *
 
-
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello world")
+
 
 def register(request):
     # pass
@@ -87,6 +85,8 @@ def home(request):
 @login_required(login_url='login')
 def profile(request, sid):
     user = CustomUser.objects.get(sid=sid)
+    if request.user != user:
+        return redirect("home")
     products = Product.objects.filter(owner=user)
     reviews = Review.objects.filter(seller=user)
     return render(request, "profile.html", {'user': user, 'products': products, 'reviews': reviews})
@@ -139,8 +139,12 @@ def seller(request, sid):
     reviews = Review.objects.filter(seller=seller)
     return render(request, "seller.html", {'seller': seller, 'products': products, 'reviews': reviews})
 
+@login_required(login_url='login')
 def edit_product(request, id):
+
     product = Product.objects.get(id=id)
+    if product.owner != request.user:
+        return redirect("home")
     form = ProductForm(instance=product)
     print(form)
     if request.method == "POST":
@@ -159,8 +163,11 @@ def edit_product(request, id):
     return render(request, "edit_product.html", {'form': form})
 
 
+@login_required(login_url='login')
 def edit_profile(request, sid):
     user = CustomUser.objects.get(sid=sid)
+    if request.user != user:
+        return redirect("home")
     form = RegisterForm(instance=user)
     print(form)
     if request.method == "POST":

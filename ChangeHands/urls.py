@@ -7,7 +7,7 @@ from MainApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.home, name='home'),
     path('register/', views.register, name = 'register'),
     path('home', views.home, name = 'home'),
     path('login', views.loginpage, name = 'login'),
