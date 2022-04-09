@@ -2,27 +2,114 @@
 {% load static %}
 
 {% block head%}
-<link type="text/css" rel="stylesheet" href="{% static 'css/result.css'  %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/home.css'  %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/add_product.css'  %}" />
 
 {% endblock head%}
 {%block title%}
-Feed|ChangeHands
+Home
 
 {%endblock title%}
 {% block content%}
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 ttl">
-            <h1>Latest Products</h1>
+            <h1>All Products</h1>
+            <button type="button" id="toggle" class="btn btn-outline-secondary">Filter Products</button>
+        </div>
+
+    </div>
+
+    <div class="row container-fluid text-center booking-form" id = "filter" style="display: none;">
+        <div class="col">
+            <form method='POST' class="edit-form" >
+            {% csrf_token %}
+                
+
+                <div class="row">
+                            
+                            
+                    <div class="col">
+
+                        <div class="form-group">
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong><br>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+            
+                                {% for error in form.non_field_errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <span class="form-label">Min Price</span>
+                            <input type="number" name = "min_price" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <span class="form-label">Catagory</span>
+                            <select class="form-control" name="catagory">
+                                {% for catagory in catagories %}
+                                <option value="{{catagory.id}}">{{catagory.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+            
+                        
+
+                        <div class="form-group">
+                            <span class="form-label">Is Available?</span>
+                            <input type="checkbox" name="status" value=1 >
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col">
+                        <div class="form-group m-3">
+                            <span class="form-label">Max Price</span>
+                            <input type="number" name = "max_price" class="form-control">
+                        </div>
+
+
+                        <div class="form-group">
+                            <span class="form-label">Is Negotiable?</span>
+                            <input type="checkbox" name="negotiable" value=1>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-btn">
+                            <input type="submit" value="Filter" class="submit-btn">
+                        </div>
+                    </div>
+                </div>
+
+            
+            </form>
 
         </div>
+
     </div>
+
     <div class="row shop_container">
 
         {% for product in product_list %}
 
-        <div class="col-lg-4 col-md-6 col-12">
-            <div class="product">
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="product mx-2">
                 <div class="product-img">
                     <a href="{%url 'view_product' product.id %}">
                         <img class="img-thumbnail" src="{{product.image1.url}}" alt="product_img1">
@@ -36,25 +123,28 @@ Feed|ChangeHands
                         <div class="col">
                             <span class="price">৳{{product.price}}</span> <br>
 
-                            
-                            <!-- <span class="">product No. {{product.product_no}}</span> <br> -->
-                            <!-- <span class="">{{product.floor}} Floor</span> <br> -->
-                            {% if product.status%}
-                            <span style="color: rgb(0, 126, 82);">Available</span> <br>
-                            {% else %}
-                            <span style="color: rgb(219, 56, 15);">Unvailable</span> <br>
-                            {% endif%}
-                        </div>
-                        <div class="col">
-                            <span class="">Owned BY {{product.owner.name}} </span> <br>
-
-                            <span class="">Posted at {{product.created_at.date}} </span> <br>
-                            
                             {% if product.negotiable%}
                             <span style="color: rgb(0, 126, 82);">Negotaiable</span> <br>
                             {% else %}
                             <span style="color: rgb(219, 56, 15);">Fixed Price</span> <br>
                             {% endif%}
+
+                            <span class="">Owned By: </span> <span>{{product.owner.name}} </span> <br>
+
+                            <span class="">Posted at: </span> <span>{{product.created_at.date}} </span> <br>
+
+
+
+
+                            {% if product.status%}
+                            <span style="color: rgb(0, 126, 82);">Available</span> <br>
+                            {% else %}
+                            <span style="color: rgb(219, 56, 15);">Unvailable</span> <br>
+                            {% endif%}
+
+
+
+
                         </div>
                     </div>
 
@@ -69,6 +159,20 @@ Feed|ChangeHands
 
     </div>
 </div>
+<script>
+    const targetDiv = document.getElementById("filter");
+    const btn = document.getElementById("toggle");
+    console.log(targetDiv);
+    console.log(btn)
+    btn.onclick = function () {
+        if (targetDiv.style.display !== "none") {
+            targetDiv.style.display = "none";
+        } else {
+            targetDiv.style.display = "block";
+        }
+    };
 
+    // document.getElementsByClassName('filter').style.display='block';
+</script>
 
 {% endblock content%}

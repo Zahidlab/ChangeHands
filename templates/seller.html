@@ -4,25 +4,25 @@
 <link type="text/css" rel="stylesheet" href="{% static 'css/seller.css' %}" />
 {%endblock head%}
 {%block title%}
-Profile {{user.name}}
+Seller {{seller.name}}
 {%endblock title%}
 {%block content%}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-md-4 m-4 profile text-center">
-            <h2>user details</h2>
+            <h2>Seller details</h2>
             <hr>
-            <img class="propic" src="{{user.profile_pic.url}}" alt="Profile Picture">
-            <h3>{{user.name}}</h3>
-            <h5>{{user.sid}}</h5>
-            <a href="mailto:{{user.email}}">
-                <h6><i class="fa-solid fa-envelope"></i> {{user.email}}</h6>
+            <img class="propic" src="{{seller.profile_pic.url}}" alt="Profile Picture">
+            <h3>{{seller.name}}</h3>
+            <h5>{{seller.sid}}</h5>
+            <a href="mailto:{{seller.email}}">
+                <h6><i class="fa-solid fa-envelope"></i> {{seller.email}}</h6>
             </a>
 
             <h6><i class="fas fa-phone"></i> {{user.phone_number}}</h6>
-            <h6> {{user.address}} </h6>
-            <a class="btn btn-outline-success" href="{% url 'edit_profile' user.sid %}">Update Profile</a>
+            <h6> {{seller.address}} </h6>
+
         </div>
         <div class="col-lg-7 col-md-7 m-4  details">
             <div class="row">
@@ -37,7 +37,7 @@ Profile {{user.name}}
             
             <div class="row my-4">
                 <div class="col-sm-12 reviews p-2">
-                    <h3>Reviews of the user:</h3>
+                    <h3>Reviews of the seller:</h3>
                     {% for review in reviews %}
                         <div class="alert alert-info " role="alert">
                             <span class = "reviewer-name">{{review.reviewer.name}}</span> <br>
@@ -50,7 +50,7 @@ Profile {{user.name}}
         </div>
     </div>
     <!-- ================================== -->
-    <h3>Products of {{user.name}}:</h3>
+    <h3>Products of {{seller.name}}:</h3>
     <div class="row shop_container my-3">
         
         {% for product in products %}
@@ -91,12 +91,12 @@ Profile {{user.name}}
                             {% endif%}
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-12">
                             <a class="btn btn-outline-danger" href="{% url 'edit_product' product.id %}">Edit</a>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -3,14 +3,14 @@
 <html>
 
 <head>
-	<title>Register</title>
+	<title>Edit Profile</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 	<!-- <link type="text/css" rel="stylesheet" href="{% static 'css/register.css'  %}" /> -->
 
 	<link type="text/css" rel="stylesheet" href="{% static 'css/add_product.css' %}" />
-	<title>Register | ChangeHands</title>
+	<title>Edit Profile</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
-						<h1>Register</h1>
+						<h1>Edit Profile</h1>
 						<hr>
 					</div>
 					
@@ -89,7 +89,7 @@
 						{{form.image3}}
 						<!-- {{form.mess}} -->
 						<div class="form-btn">
-							<input type="submit" value="Register" class="submit-btn">
+							<input type="submit" value="Update" class="submit-btn">
 						</div>
 						<!-- {{form.errors}} -->
 
@@ -111,6 +111,8 @@
 			element[i].classList.add('form-control');
 		}
 
+		document.getElementById("profile_pic-clear_id").classList.remove('form-control');
+		document.getElementById("id_card_pic-clear_id").classList.remove('form-control');
 
 
 		/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript

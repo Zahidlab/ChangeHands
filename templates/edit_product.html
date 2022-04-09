@@ -55,7 +55,10 @@ Feed|ChangeHands
                         <span class="form-label">Is Negotiable?</span>
                         {{form.negotiable}}
                     </div>
-                   
+                    <div class="form-group">
+                        <span class="form-label">Is Available?</span>
+                        {{form.status}}
+                    </div>
                     
                     <div class="form-group">
                         <span class="form-label">Catagory</span>
@@ -96,6 +99,13 @@ Feed|ChangeHands
 		}
         // document.getElementsByTagName("select")[0].classList.remove('form-control');
         document.getElementById("id_negotiable").classList.remove('form-control');
+        document.getElementById("id_status").classList.remove('form-control');
+        document.getElementsByTagName("a").style.display = "none";
+        var elems = document.getElementsByTagName("a")
+        console.log(elems)
+        for (var i=3;i<6;i+=1){
+            elems[i].style.display = 'None';
+        }
 </script>
         
 

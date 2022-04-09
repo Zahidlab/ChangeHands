@@ -45,5 +45,5 @@ class ProductForm(ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'catagory', 'details', 'price', 'image1','image2', 'image3', 'negotiable', 'original_url', )
+        fields = ('name', 'catagory', 'details', 'price', 'image1','image2', 'image3', 'negotiable','status', 'original_url', )
         # fields = '__all__'

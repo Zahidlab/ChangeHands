@@ -1,45 +1,95 @@
-/* .row {
-  background-color: rgb(133, 182, 224);
-} */
-h1 {
-  text-transform: capitalize;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #292b2c;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.profile {
-  background-color: rgb(237, 239, 243);
 
-  border: 1px solid rgb(224, 224, 231);
-  /* margin: 2px; */
-  padding: 5px;
-  /* text-align: center; */
-}
-.details {
-  background-color: rgb(231, 253, 244);
-}
-.propic {
-  width: 200px;
-  height: 200px;
-  border: 2px solid rgb(104, 104, 109);
-  border-radius: 50%;
-}
 a {
-  text-decoration: None;
-  color: #4fa3e3;
+  color: #292b2c;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
 a:hover {
-  color: firebrick;
+  color: #e05164;
+  text-decoration: none;
 }
-.mess-details {
-  background-color: #e8efeb;
-  border: 1px solid rgb(224, 224, 231);
+
+a:focus {
+  outline: none;
 }
-.room-details {
-  background-color: rgb(242, 251, 255);
-  border: 1px solid rgb(224, 224, 231);
-  padding: 5px;
+
+.shop_container {
+  /* position: relative; */
+  top: -7px;
+  /* top: 100px; */
+  margin-top: 20px;
 }
-.delete{
-  color:darkred;
+
+.product {
+  background-color: #fff;
+  /* position: relative; */
+  margin-bottom: 30px;
+  transition: all 0.11s ease-in-out;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  /* margin: 5px; */
+  /* display: -ms-flexbox; */
+  /* display: flex; */
+  /* -ms-flex-align: center; */
+
+  /* align-items: center; */
+  /* -ms-flex-pack: center; */
+  /* justify-content: center; */
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
+  /* overflow: scroll; */
+  /* text-transform: capitalize; */
+  -webkit-transform: translateY(15px);
+  -ms-transform: translateY(15px);
+  -o-transform: translateY(15px);
+  transform: translateY(15px);
+
+  background-color: rgb(238, 243, 245);
+  padding: 7px 15px;
+  max-height: 400px;
+  /* max-width:350px; */
 }
-.delete:hover{
-  color:red;
+.img-thumbnail {
+  max-height: 240px;
+  object-fit: cover;
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product_info {
+  /* min-height: 300px; */
+  margin-bottom: 5px;
+}
+.product:hover {
+  opacity: 1;
+  z-index: 0;
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.price {
+  color: rgb(233, 64, 64);
+}
+.mess-name {
+  margin: 4px 1px;
+  text-align: center;
+}
+.product_img {
+  text-align: center;
+}
+.ttl {
+  text-align: center;
+  margin: 20px;
 }

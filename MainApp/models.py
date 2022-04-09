@@ -128,7 +128,7 @@ class Comment(models.Model):
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
     text = models.CharField(max_length= 2000)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    # product = models.ForeignKey(Product, on_delete=models.CASCADE)
     reviewer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="reviewer")
     seller = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="seller")
 

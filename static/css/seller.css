@@ -1,11 +1,66 @@
-h1,
+/* .row {
+  background-color: rgb(133, 182, 224);
+} */
+.container-fluid{
+    font-family: "Roboto Condensed", sans-serif;
+}
+h1 {
+    text-transform: capitalize;
+  }
+  .profile {
+    background-color: rgb(237, 239, 243);
+  
+    border: 1px solid rgb(224, 224, 231);
+    /* margin: 2px; */
+    padding: 5px;
+    /* text-align: center; */
+  }
+  .details {
+    background-color: rgb(249, 255, 253);
+  }
+  .propic {
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgb(104, 104, 109);
+    border-radius: 50%;
+  }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: firebrick;
+  }
+  .mess-details {
+    background-color: #e8efeb;
+    border: 1px solid rgb(224, 224, 231);
+  }
+  .room-details {
+    background-color: rgb(242, 251, 255);
+    border: 1px solid rgb(224, 224, 231);
+    padding: 5px;
+  }
+  .reviews{
+    background-color: #f6f8ff;
+    border: 1px solid rgb(224, 224, 231);
+  }
+  .reviewer-name{
+    text-transform: capitalize;
+    color: #910045;
+  }
+  .product-summary{
+    background-color: #f6f8ff;
+    border: 1px solid rgb(224, 224, 231);
+
+  }
+  /*================================================= */
+  h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
   color: #292b2c;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 a {
@@ -13,7 +68,7 @@ a {
   text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 a:hover {
@@ -57,7 +112,9 @@ a:focus {
 
   background-color: rgb(238, 243, 245);
   padding: 7px 15px;
-  height: 500px;
+  height: 400px;
+  width: 400px;
+
 }
 .img-thumbnail {
   max-height: 240px;
@@ -66,6 +123,7 @@ a:focus {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  height: auto;
 }
 .product_info {
   /* min-height: 300px; */

@@ -22,7 +22,7 @@ hr {
 }
 
 a {
-  color: #324752;
+  color: #075077;
   text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -69,7 +69,7 @@ body {
 }
 .right-side-pro-detail p {
   font-size: 25px;
-  color: #a1a1a1;
+  color: #1f0000;
 }
 .right-side-pro-detail .price-pro {
   color: #e45641;
@@ -96,4 +96,45 @@ body {
   color: aliceblue;
   padding: 3px;
   text-transform: capitalize;
+}
+.container{
+  background-color: #f5fcff;
+}
+img{
+  border:1px solid #f5fcff;
+  transition:transform 0.40s ease;
+}
+img:hover {
+  -webkit-transform:scale(2.5); /* or some other value */
+  transform:scale(2.5);
+}
+.img1{
+  max-width: 200px;
+  max-height: 200px;
+}
+.img2{
+  max-width: 100px;
+  max-height: 100px;
+}
+.img3{
+  max-width: 100px;
+  max-height: 100px;
+}
+.price-area{
+  /* border: 1px  ; */
+  background-color: rgb(212, 255, 255);
+  border-radius: 6%;
+  padding: 5px;
+  font-size: 16pt;
+}
+.details{
+  border: 1px solid rgb(222, 216, 216);
+  padding: 6px;
+}
+.pic-n-detail{
+  background-color: #ecfffb;
+}
+.comments{
+  /* margin-top: 7px; */
+  background-color: rgb(252, 243, 242);
 }
