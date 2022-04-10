@@ -23,6 +23,7 @@ Profile {{user.name}}
             <h6><i class="fas fa-phone"></i> {{user.phone_number}}</h6>
             <h6> {{user.address}} </h6>
             <a class="btn btn-outline-success" href="{% url 'edit_profile' user.sid %}">Update Profile</a>
+            <a class="btn btn-outline-success" href="{% url 'add_product' %}">Add Product</a>
         </div>
         <div class="col-lg-7 col-md-7 m-4  details">
             <div class="row">
@@ -92,9 +93,13 @@ Profile {{user.name}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <a class="btn btn-outline-danger" href="{% url 'edit_product' product.id %}">Edit</a>
+                        <div class="col-sm-6">
+                            <a class="btn btn-outline-info" href="{% url 'edit_product' product.id %}">Edit</a>
+                        </div>
 
+                        <div class="col-sm-6">
+                            <a class="btn btn-outline-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            
                         </div>
                     </div>
                 </div>

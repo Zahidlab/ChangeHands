@@ -58,7 +58,8 @@
         <form class="d-flex">
 
           <span class="hello">Hello,
-            <a class='profile-link' href="{% url 'profile' user.sid %}"> {{request.user.name}}</a>
+            <a class='profile-link' href="{% url 'profile' user.sid %}"> 
+              {{user.name}}</a>
           </span>
 
           <a class="btn btn-outline-danger" href="{% url 'logout'%}">LogOut</a>

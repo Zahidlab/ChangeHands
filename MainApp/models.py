@@ -47,8 +47,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     sid = models.IntegerField(primary_key=True, unique=True)
     email = models.EmailField(max_length=254, unique=True)
     name = models.CharField(max_length=254)
-    phone_number = models.IntegerField()
-    profile_pic = models.ImageField(blank=True, upload_to="profile/")
+    phone_number = models.IntegerField(unique=True)
+    profile_pic = models.ImageField(upload_to="profile/")
     
     department = models.CharField(max_length=100)
     facebook_profile = models.URLField(null=True, blank=True)

@@ -140,6 +140,11 @@ def seller(request, sid):
     return render(request, "seller.html", {'seller': seller, 'products': products, 'reviews': reviews})
 
 @login_required(login_url='login')
+def delete_product(request, id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    return redirect('profile', sid=request.user.sid)
+@login_required(login_url='login')
 def edit_product(request, id):
 
     product = Product.objects.get(id=id)

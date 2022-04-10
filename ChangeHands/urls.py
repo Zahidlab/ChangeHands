@@ -18,6 +18,7 @@ urlpatterns = [
     path('comment', views.comment, name = 'comment'),
     path('seller/<int:sid>', views.seller, name = 'seller'),
     path('edit_product/<int:id>', views.edit_product, name = 'edit_product'),
+    path('delete_product/<int:id>', views.delete_product, name = 'delete_product'),
     path('edit_profile/<int:sid>', views.edit_profile, name = 'edit_profile'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
